@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="CyberWatch - уязвимости программного обеспечения. CVE, оценки риска и рекомендации по защите.">
+    <title>CyberWatch - уязвимости под наблюдением</title>
+    <link rel="icon" href="assets/img/shield.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/news.js" defer></script>
+    <script src="assets/js/app.js" defer></script>
+</head>
+
+<body>
+    <a class="skip-link" href="#feed">Перейти к новостям</a>
+    <header class="header" id="top">
+        <div class="header-inner wrap">
+            <a class="brand" href="#top" aria-label="CyberWatch - на главную"><img
+                    src="assets/img/shield.svg" width="30" height="34"
+                    alt="">Cyber<span>Watch</span></a>
+            <nav aria-label="Основная навигация">
+                <a class="nav-active" href="#feed">Лента угроз</a>
+                <a href="#overview">Обзор</a>
+            </nav>
+        </div>
+    </header>
+    <main class="wrap">
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-copy">
+                <h1 id="hero-title">Уязвимости под наблюдением</h1>
+                <p class="hero-description">Последние сообщения о критических уязвимостях,
+                    затронутых продуктах и потенциальных угрозах безопасности.</p>
+            </div>
+        </section>
+        <section class="stats" id="overview" aria-label="Статистика локальной базы"></section>
+        <section class="feed" id="feed" aria-labelledby="feed-title">
+            <div class="section-heading">
+                <h2 id="feed-title">Последние публикации</h2>
+            </div>
+            <div class="controls">
+                <div class="filter-line">
+                    <div class="severity-tabs" role="group" aria-label="Фильтр по критичности">
+                        <button class="filter active" type="button" data-severity="all"
+                            aria-pressed="true">Все угрозы <span id="all-total"></span></button>
+                        <button class="filter" type="button" data-severity="critical"
+                            aria-pressed="false"><i class="critical-dot"></i>Критические</button>
+                        <button class="filter" type="button" data-severity="high"
+                            aria-pressed="false"><i class="high-dot"></i>Высокие</button>
+                    </div>
+                    <label class="search"><span aria-hidden="true">⌕</span><input id="search"
+                            type="search" placeholder="Продукт, заголовок или CVE…"
+                            aria-label="Поиск новостей" autocomplete="off"></label>
+                    <div class="sort-controls"><label for="sort">Сортировка:</label><select
+                            id="sort">
+                            <option value="date-desc">Сначала новые</option>
+                            <option value="date-asc">Сначала старые</option>
+                            <option value="cvss-desc">CVSS: по убыванию</option>
+                            <option value="cvss-asc">CVSS: по возрастанию</option>
+                        </select><button class="reset" id="reset" type="button"
+                            aria-label="Сбросить все фильтры"><span aria-hidden="true">↺</span>
+                            Сбросить</button></div>
+                </div>
+            </div>
+            <div class="results-line"><span id="results" role="status" aria-live="polite"></span>
+            </div>
+            <div class="news-grid" id="news-grid"></div>
+            <div class="empty" id="empty" hidden><span aria-hidden="true">⌕</span>
+                <h3>Совпадений не найдено</h3>
+                <p>Попробуйте другой запрос или сбросьте фильтры.</p><button id="empty-reset"
+                    type="button" class="apply-button">Сбросить фильтры</button>
+            </div>
+            <nav class="pagination" aria-label="Страницы новостей"><button id="previous-page"
+                    type="button">← Назад</button><span id="page-status"
+                    aria-live="polite"></span><button id="next-page" type="button">Далее →</button>
+            </nav>
+            <p id="pagination-message" class="count-message error" role="status" hidden></p>
+        </section>
+    </main>
+    <footer class="footer wrap"><span>CyberWatch</span><span>Уязвимости, риски и способы
+            защиты</span></footer>
+    <dialog id="detail-dialog" aria-labelledby="dialog-title">
+        <div class="dialog-top"><span class="eyebrow">УЯЗВИМОСТЬ</span><button id="close-dialog"
+                class="close-dialog" type="button" aria-label="Закрыть подробности">×</button></div>
+        <div id="dialog-content"></div>
+    </dialog>
+    <noscript>
+        <p class="noscript">Для отображения новостей и работы фильтров включите JavaScript в
+            браузере.</p>
+    </noscript>
+</body>
+
+</html>
